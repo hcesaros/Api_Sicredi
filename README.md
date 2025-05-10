@@ -95,7 +95,6 @@ Este relatório fornece uma visualização dos cenários executados, resultados 
 
 - Incluir validação de campos obrigatórios no backend para autenticação
 - Melhorar mensagens de erro para retorno 401/403
-- Adicionar paginação no endpoint `/auth/products`
 - Criar schema JSON para validação de contrato
 
 ---
@@ -103,7 +102,7 @@ Este relatório fornece uma visualização dos cenários executados, resultados 
 ## 👤 Autor
 
 **Henrique Cesar**  
-📧 henrique.teste@gmail.com  
+📧 h.cesarose@gmail.com  
 💼 [LinkedIn](https://www.linkedin.com/in/henrique-cesaros/)  
 📂 Projeto criado como parte de um desafio para a Sicredi
 
