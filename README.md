@@ -54,15 +54,21 @@ cd api-automation-sicredi
 mvn test
 ```
 
-### Gerar relatório Allure
-```bash
-mvn allure:serve
-```
+## 📊 Geração de Relatórios com Cucumber
 
-> **Nota:** Instale o Allure CLI com:
-```bash
-npm install -g allure-commandline --save-dev
-```
+Após a execução dos testes, o relatório é gerado automaticamente na pasta `target/cucumber-reports`.
+
+### Como visualizar:
+1. Execute os testes com o Maven:
+   ```bash
+   mvn clean test
+   ```
+2. Acesse o relatório HTML gerado:
+   ```
+   target/cucumber-reports/cucumber-html-reports/overview-features.html
+   ```
+
+Este relatório fornece uma visualização dos cenários executados, resultados (pass/fail), e estatísticas por feature.
 
 ---
 
