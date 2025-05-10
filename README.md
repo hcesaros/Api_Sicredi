@@ -17,7 +17,7 @@ Automação desenvolvida com o objetivo de validar a API DummyJSON utilizada com
 - **RestAssured**
 - **Cucumber (Gherkin)**
 - **JUnit**
-- **Allure Reports**
+- **Cucumber Reports**
 
 ---
 
