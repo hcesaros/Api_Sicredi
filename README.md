@@ -29,11 +29,11 @@ api-automation-sicredi/
 ├── src/
 │   └── test/
 │       ├── java/
+│       │   ├── runners/
 │       │   ├── steps/
 │       │   └── utils/
 │       └── resources/
 │           ├── features/
-│           └── cucumber.properties
 │
 ├── pom.xml
 └── README.md
