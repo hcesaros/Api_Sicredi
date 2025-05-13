@@ -40,7 +40,6 @@ public class ProductsSteps {
             Assert.assertNotNull("Campo 'sku' está nulo", product.get("sku"));
             Assert.assertNotNull("Campo 'weight' está nulo", product.get("weight"));
 
-            // Dimensions
             Map<String, Object> dimensions = (Map<String, Object>) product.get("dimensions");
             Assert.assertNotNull("Campo 'dimensions' está nulo", dimensions);
             Assert.assertNotNull("Campo 'width' em 'dimensions' está nulo", dimensions.get("width"));
@@ -51,7 +50,6 @@ public class ProductsSteps {
             Assert.assertNotNull("Campo 'shippingInformation' está nulo", product.get("shippingInformation"));
             Assert.assertNotNull("Campo 'availabilityStatus' está nulo", product.get("availabilityStatus"));
 
-            // Reviews
             List<Map<String, Object>> reviews = (List<Map<String, Object>>) product.get("reviews");
             Assert.assertNotNull("Campo 'reviews' está nulo", reviews);
             for (Map<String, Object> review : reviews) {
@@ -65,7 +63,6 @@ public class ProductsSteps {
             Assert.assertNotNull("Campo 'returnPolicy' está nulo", product.get("returnPolicy"));
             Assert.assertNotNull("Campo 'minimumOrderQuantity' está nulo", product.get("minimumOrderQuantity"));
 
-            // Meta
             Map<String, Object> meta = (Map<String, Object>) product.get("meta");
             Assert.assertNotNull("Campo 'meta' está nulo", meta);
             Assert.assertNotNull("Campo 'createdAt' em 'meta' está nulo", meta.get("createdAt"));
@@ -73,7 +70,6 @@ public class ProductsSteps {
             Assert.assertNotNull("Campo 'barcode' em 'meta' está nulo", meta.get("barcode"));
             Assert.assertNotNull("Campo 'qrCode' em 'meta' está nulo", meta.get("qrCode"));
 
-            // Imagens
             List<String> images = (List<String>) product.get("images");
             Assert.assertNotNull("Campo 'images' está nulo", images);
             Assert.assertFalse("Campo 'images' está vazio", images.isEmpty());
@@ -81,7 +77,6 @@ public class ProductsSteps {
             Assert.assertNotNull("Campo 'thumbnail' está nulo", product.get("thumbnail"));
         }
 
-        // Verificar info global
         Assert.assertNotNull("Campo 'total' está nulo", json.get("total"));
         Assert.assertNotNull("Campo 'skip' está nulo", json.get("skip"));
         Assert.assertNotNull("Campo 'limit' está nulo", json.get("limit"));
