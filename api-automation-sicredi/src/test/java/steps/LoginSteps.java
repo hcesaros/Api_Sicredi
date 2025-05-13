@@ -27,14 +27,8 @@ public class LoginSteps {
      * Define o payload de login com username e password recebidos como parâmetros.
      */
     @Dado("que o payload de login possui username {string} e password {string}")
-    public void queOPayloadDeLoginPossuiUsernameEPassword(String username, String password) {
-        // Cria um mapa com os campos de login
-        Map<String, String> loginData = new HashMap<>();
-        loginData.put("username", username);
-        loginData.put("password", password);
-
-        // Converte para JSON de forma segura
-        payload = new Gson().toJson(loginData);
+    public void quePayloadLoginPossuiUsuarioESenha(String username, String password) {
+        CommonSteps.payload = String.format("{\"username\": \"%s\", \"password\": \"%s\"}", username, password);
     }
 
     /**
@@ -50,16 +44,19 @@ public class LoginSteps {
      */
     @Quando("envio uma requisição POST para {string}")
     public void envioUmaRequisiçãoPOSTPara(String endpoint) {
-        RequestSpecification request = RestAssured.given()
+        if (CommonSteps.payload == null || CommonSteps.payload.trim().isEmpty()) {
+            throw new IllegalStateException("Payload está nulo. Verifique se o step que o define foi executado antes.");
+        }
+
+        Response response = RestAssured
+                .given()
                 .baseUri("https://dummyjson.com")
                 .header("Content-Type", "application/json")
-                .body(payload); // <- Corrigido aqui
+                .body(CommonSteps.payload)
+                .when()
+                .post(endpoint);
 
-        Response res = request.post(endpoint);
-        CommonSteps.setResponse(res);
-
-        System.out.println("Status: " + CommonSteps.getResponse().statusCode());
-        System.out.println("Body:\n" + CommonSteps.getResponse().getBody().asPrettyString());
+        CommonSteps.setResponse(response);
     }
 
     /**
