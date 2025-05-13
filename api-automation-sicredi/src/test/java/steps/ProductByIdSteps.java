@@ -19,7 +19,6 @@ public class ProductByIdSteps {
     public void o_corpo_da_resposta_deve_conter_todos_os_campos_esperados_do_produto() {
         var json = CommonSteps.getResponse().jsonPath();
 
-        // 🔍 Campos principais
         Assert.assertEquals(1, json.getInt("id"));
         Assert.assertEquals("Essence Mascara Lash Princess", json.getString("title"));
         Assert.assertNotNull(json.getString("description"));
@@ -29,23 +28,19 @@ public class ProductByIdSteps {
         Assert.assertEquals("BEA-ESS-ESS-001", json.getString("sku"));
         Assert.assertEquals(4, json.getInt("weight"));
 
-        // 🔖 Tags do produto
         List<String> tags = json.getList("tags");
         Assert.assertTrue(tags.contains("beauty"));
         Assert.assertTrue(tags.contains("mascara"));
 
-        // 📦 Dimensões
         Map<String, Object> dimensions = json.getMap("dimensions");
         Assert.assertNotNull(dimensions.get("width"));
         Assert.assertNotNull(dimensions.get("height"));
         Assert.assertNotNull(dimensions.get("depth"));
 
-        // 🧾 Informações adicionais
         Assert.assertEquals("1 week warranty", json.getString("warrantyInformation"));
         Assert.assertEquals("Ships in 3-5 business days", json.getString("shippingInformation"));
         Assert.assertEquals("In Stock", json.getString("availabilityStatus"));
 
-        // ⭐ Avaliações (reviews)
         List<Map<String, Object>> reviews = json.getList("reviews");
         for (Map<String, Object> review : reviews) {
             Assert.assertNotNull(review.get("rating"));
@@ -55,19 +50,16 @@ public class ProductByIdSteps {
             Assert.assertNotNull(review.get("reviewerEmail"));
         }
 
-        // 🧬 Metadados
         Map<String, Object> meta = json.getMap("meta");
         Assert.assertNotNull(meta.get("createdAt"));
         Assert.assertNotNull(meta.get("updatedAt"));
         Assert.assertNotNull(meta.get("barcode"));
         Assert.assertNotNull(meta.get("qrCode"));
 
-        // 🖼️ Imagens
         List<String> images = json.getList("images");
         Assert.assertFalse(images.isEmpty());
         Assert.assertNotNull(json.getString("thumbnail"));
 
-        // 📦 Política e quantidade
         Assert.assertEquals("No return policy", json.getString("returnPolicy"));
         Assert.assertEquals(48, json.getInt("minimumOrderQuantity"));
     }
